@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git credentialsId: '3957e43f-320b-44d0-ae1b-ae2db585564b', url: 'https://github.com/priyanshuvatsyan/hello-world', branch: 'master'
+                git credentialsId: '3957e43f-320b-44d0-ae1b-ae2db585564b', url: 'https://github.com/priyanshuvatsyan/python-CI---jenkins', branch: 'master'
             }
         }
 
