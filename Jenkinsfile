@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git credentialsId: '3957e43f-320b-44d0-ae1b-ae2db585564b', url: 'https://github.com/priyanshuvatsyan/python-CI---jenkins', branch: 'master'
+  git credentialsId: '3957e43f-320b-44d0-ae1b-ae2db585564b', url: 'https://github.com/priyanshuvatsyan/python-CI---jenkins', branch: 'master'
             }
         }
 
@@ -15,25 +15,21 @@ pipeline {
                 . venv/bin/activate
 
                 python3 -m pip install --upgrade pip
-
-                if [ -f requitements.txt ]; then
-                    python3 -m pip install -r requitements.txt
-                else
-                    echo "Error: requitements.txt not found!"
-                    exit 1
-                fi
+                python3 -m pip install -r requitements.txt
                 '''
             }
         }
 
-        stage('Run Tests') {
+stage('Run Tests') {
     steps {
         sh '''
-        . venv/bin/activate
-        pytest tests/
+            . venv/bin/activate
+            export PYTHONPATH=$WORKSPACE
+            pytest tests/
         '''
     }
 }
+
 
 
         stage('Deploy') {
